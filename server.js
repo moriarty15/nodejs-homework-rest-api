@@ -2,8 +2,6 @@ const app = require('./app')
 const dotenv = require("dotenv")
 dotenv.config()
 
-console.log(process.env.DB_HOST)
-
 const { DB_HOST } = process.env;
 
 const mongoose = require('mongoose');
