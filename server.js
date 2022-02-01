@@ -1,11 +1,15 @@
 const app = require('./app')
+const dotenv = require("dotenv")
+dotenv.config()
+
+console.log(process.env.DB_HOST)
+
+const { DB_HOST } = process.env;
 
 const mongoose = require('mongoose');
 
-const DB_HOST = "mongodb+srv://Vladimir:1151020Pp@cluster0.0fzje.mongodb.net/db-contacts?retryWrites=true&w=majority"
-
 mongoose.connect(DB_HOST)
-  .then(() => console.log("database connect success"))
+  .then(() => console.log("database connect success111"))
   .catch(error => console.log(error.message))
 
 // app.listen(3000, () => {
