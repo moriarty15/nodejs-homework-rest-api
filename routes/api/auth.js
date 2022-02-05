@@ -26,7 +26,7 @@ router.post("/users/signup", async (req, res, next) => {
     res.status(201).json({
       user: {
         email,
-        // subscription: "starter"
+        subscription: "starter"
       },
     });
   } catch (error) {
@@ -50,7 +50,8 @@ router.post("/users/login", async (req, res, next) => {
           throw new createError(401, "Email or password is wrong")
       }
       const payload = {
-          id: user._id
+        id: user._id,
+        subscription: user.subscription
       }
     const token = jwt.sign(payload, SECRET_KEY, { expiresIn: "1h" })
     await User.findByIdAndUpdate(user._id, {token})
@@ -58,7 +59,7 @@ router.post("/users/login", async (req, res, next) => {
           token,
           user: {
               email,
-            //   subscription: "starter"
+              subscription: user.subscription,
           }
       })
   } catch (error) {
